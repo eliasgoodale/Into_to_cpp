@@ -1,0 +1,259 @@
+/*DESIGN PATTERNS*/ 
+
+/*
+Patterns have 4 elements:
+        >pattern name: describes the problem, solutions, and consequences concicely
+
+        >problem:   describes when to apply the problem, the problem and its context, perhaps 
+                    a list of conditions to apply before the conditions for the problem are met(subproblems)
+        
+        >solution:  describes how elements that make up the design relate, and collaborate to tackle the problem
+
+        >consequences:  results of the tradeoffs of using this pattern, drawbacks, strongsuites etc
+*/
+/*
+    Model View Controller
+
+    This design pattern implements a recursive composition:
+    Graphic is the least common denominator between classes, we know we need to draw graphics, and a graphic at any
+    level of organization must reflect this a graphic can be 2d 3d 4d etc
+
+    Every Scene may have either primitives or other scenes inside of them, which allows us to both distinguish and control
+    whole scenes easily, as well as modify the objects inside of them
+
+    Use cases: 
+        *   representation of whole part Hierarchies of objects [Heirarchy determines what dimension the graphic is in]
+        *   these arent draw dimensions but concepts of relation wherin every Scene is an aggregate of primitive graphic
+        *   you want to treat all objects in the composite structure uniformly
+        
+*/
+
+/*  COMPONENT
+
+    Component class, declares interface for objects in the composition 
+    and defines behavior for the interfaces common to all classes.
+    In addition it declares an interfaces that manages its child components
+
+    Methods for the component classs can be written to operate on:
+        multi_dimensional -- Has Children
+            may define a method to access a components parent
+        any_dimensional -- may or may not have children
+        single_dimensional -- does not have children
+
+    Add(), Remove(), Draw(), and GetChild() are interaction methods for theses classes.
+    Add(), Remove() and GetChild() are specific to multi_dimesional members.
+    Draw() applys to any_dimensional member.
+    methods that are specific to each class apply to only those classes 
+    (for instance a square will always produce a remainder of 0 when divided by its width).
+
+    Advantages:
+        -   Makes methods able to take any dimension of objects and recursively apply the correct
+            operations.
+        -   Makes client simple and easy to use
+        -   Makes addition and subtraction of components easy
+
+    Disadvantages:
+        -   Design can be too general
+        -   Not good for working with lots of objects that need unique properties
+
+    Related Patterns:
+        -   Decorator: used with composite and often has the same parent class.
+        -   Flyweight: lets you share components, but they can no longer relate to parents.
+        -   Iterator: can be used to traverse composites.
+        -   Visitor: Localizes operations and behavior that would otherwise be distributed across Composite and Leaf classes
+*/
+
+
+
+/* A Component Class */ 
+ class   Graphic {
+    public:
+        virtual void Draw() = 0;
+        virtual void Add(Graphic *) = 0;
+        virtual void Remove(Graphic *) = 0;
+        virtual void GetChild(int) = 0;
+};
+
+/* Wherin all Composites of Objects are Components */
+class   Scene: public Graphic {
+    std::vector <Graphic *> primitives;
+
+    public:
+        void Draw() {
+            ...
+        };
+
+        void Add(Graphic *elem) {
+            primitives.push_back(elem);
+        };
+
+        void Remove(Graphic *g) {
+            primitives.pop(elem)
+        };
+
+        Graphic *g GetChild(int id) {
+            primitives.seek(elem);
+        };
+};
+
+/* Of standard primitives that share the methods of being components themselves */
+class Rectangle: public Graphic {
+    public:
+        void Draw() {
+            ...
+        };
+};
+
+class Line: public Graphic {
+    public:
+        void Draw() {
+            ...
+        };
+};
+
+class Text: public Graphic {
+    public:
+        void Draw() {
+            ...
+        };
+};
+/* DECORATOR(WRAPPER)
+
+Intent:
+    Attach additional responsibilities to an object dynamically. prevents subclassing
+
+Motivation:
+    Need a way to add responsibilities to objects and not entire classes
+    we add responsibilities with inheritance
+    We do this, by enclosing the component in another object that adds the functionality we want
+
+    Example: 
+        A textview object that displays text in a window and has no scroll bars by default.
+        We will add a Decorator class and subclasses Border and Scroll that allow these classes
+
+    Pattern:
+        -   Create a lowest common denominator that makes classes interchangable: "What are these classes at their basest form?"
+            a Student may be a Person or a Freshman but the lcd class is Person because Person->Student->Freshman
+        -   
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
